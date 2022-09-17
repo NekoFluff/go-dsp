@@ -62,7 +62,7 @@ func main() {
 	// recipe = recipe.concat(getRecipeForItem('Sorter MK.III', 0.5));
 	// recipe = recipe.concat(getRecipeForItem('Graphene', 4));
 
-	recipe = append(recipe, GetRecipeForItem("Conveyor belt MK.II", 1, "")...)
+	recipe = append(recipe, GetOptimalRecipe("Conveyor belt MK.II", 1, "")...)
 
 	// function combineRecipes(recipes) {
 	//   const uniqueRecipes = {};
@@ -97,7 +97,7 @@ func main() {
 	fmt.Println(string(jsonStr))
 }
 
-func GetRecipeForItem(itemName dsp.ItemName, craftingSpeed float32, parentItemName dsp.ItemName) []dsp.ComputedRecipe {
+func GetOptimalRecipe(itemName dsp.ItemName, craftingSpeed float32, parentItemName dsp.ItemName) []dsp.ComputedRecipe {
 	computedRecipes := []dsp.ComputedRecipe{}
 	recipe, ok := GetRecipe(itemName)
 
@@ -122,7 +122,7 @@ func GetRecipeForItem(itemName dsp.ItemName, craftingSpeed float32, parentItemNa
 
 		for materialName, materialCountPerSec := range computedRecipe.ItemsConsumedPerSec {
 			targetCraftingSpeed := materialCountPerSec
-			cr := GetRecipeForItem(materialName, targetCraftingSpeed, recipe.OutputItem)
+			cr := GetOptimalRecipe(materialName, targetCraftingSpeed, recipe.OutputItem)
 			computedRecipes = append(computedRecipes, cr...)
 		}
 	}
