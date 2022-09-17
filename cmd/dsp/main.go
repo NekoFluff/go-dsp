@@ -4,52 +4,14 @@ import (
 	"dsp/internal/dsp"
 	"encoding/json"
 	"fmt"
-	"io/ioutil"
 	"log"
-	"os"
-	"sync"
 )
-
-// Global
-var once sync.Once
-var recipeMap = make(map[dsp.ItemName]dsp.Recipe)
-
-func GetRecipe(itemName dsp.ItemName) (dsp.Recipe, bool) {
-
-	once.Do(func() {
-
-		// Open up the file
-		jsonFile, err := os.Open("data/items.json")
-		if err != nil {
-			log.Fatal(err)
-		}
-		defer jsonFile.Close()
-
-		// Read and unmarshal the file
-		byteValue, _ := ioutil.ReadAll(jsonFile)
-		var recipe []dsp.Recipe
-		err = json.Unmarshal(byteValue, &recipe)
-		if err != nil {
-			log.Fatal(err)
-		}
-
-		// Map the recipe
-		for _, v := range recipe {
-			recipeMap[v.OutputItem] = v
-		}
-	})
-
-	result, ok := recipeMap[itemName]
-	return result, ok
-}
-
-func init() {
-	fmt.Println("Initializing")
-	fmt.Println(GetRecipe(dsp.ItemName("asdf")))
-}
 
 func main() {
 	log.Println("Starting DSP Optimizer Program")
+	fmt.Println("Initializing")
+	optimizer := dsp.NewOptimizer()
+	fmt.Println(optimizer.GetRecipe(dsp.ItemName("asdf")))
 
 	recipe := []dsp.ComputedRecipe{}
 
@@ -62,7 +24,7 @@ func main() {
 	// recipe = recipe.concat(getRecipeForItem('Sorter MK.III', 0.5));
 	// recipe = recipe.concat(getRecipeForItem('Graphene', 4));
 
-	recipe = append(recipe, GetOptimalRecipe("Conveyor belt MK.II", 1, "")...)
+	recipe = append(recipe, optimizer.GetOptimalRecipe("Conveyor belt MK.II", 1, "")...)
 
 	// function combineRecipes(recipes) {
 	//   const uniqueRecipes = {};
@@ -95,37 +57,4 @@ func main() {
 	// const uniqueRecipes = combineRecipes(recipe);
 	jsonStr, _ := json.MarshalIndent(recipe, "", "\t")
 	fmt.Println(string(jsonStr))
-}
-
-func GetOptimalRecipe(itemName dsp.ItemName, craftingSpeed float32, parentItemName dsp.ItemName) []dsp.ComputedRecipe {
-	computedRecipes := []dsp.ComputedRecipe{}
-	recipe, ok := GetRecipe(itemName)
-
-	if ok {
-		consumedMats := make(map[dsp.ItemName]float32)
-		numberOfFacilitiesNeeded := recipe.Time * craftingSpeed / recipe.OutputItemCount
-
-		for materialName, materialCount := range recipe.Materials {
-			consumedMats[materialName] = materialCount * numberOfFacilitiesNeeded / recipe.Time
-		}
-
-		computedRecipe := dsp.ComputedRecipe{
-			OutputItem:           recipe.OutputItem,
-			Facility:             recipe.Facility,
-			NumFacilitiesNeeded:  numberOfFacilitiesNeeded,
-			ItemsConsumedPerSec:  consumedMats,
-			SecondsSpentPerCraft: recipe.Time,
-			CraftingPerSec:       craftingSpeed,
-			UsedFor:              parentItemName,
-		}
-		computedRecipes = append(computedRecipes, computedRecipe)
-
-		for materialName, materialCountPerSec := range computedRecipe.ItemsConsumedPerSec {
-			targetCraftingSpeed := materialCountPerSec
-			cr := GetOptimalRecipe(materialName, targetCraftingSpeed, recipe.OutputItem)
-			computedRecipes = append(computedRecipes, cr...)
-		}
-	}
-
-	return computedRecipes
 }
