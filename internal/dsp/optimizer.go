@@ -12,19 +12,26 @@ type Optimizer struct {
 	// Global
 	once      sync.Once
 	recipeMap map[ItemName]Recipe
+	config    OptimizerConfig
 }
 
-func NewOptimizer() *Optimizer {
-	return &Optimizer{
+type OptimizerConfig struct {
+	DataSource string
+}
+
+func NewOptimizer(config OptimizerConfig) *Optimizer {
+	o := &Optimizer{
 		recipeMap: make(map[ItemName]Recipe),
+		config:    config,
 	}
+	o.loadRecipes()
+	return o
 }
 
-func (o *Optimizer) GetRecipe(itemName ItemName) (Recipe, bool) {
-
+func (o *Optimizer) loadRecipes() {
 	o.once.Do(func() {
 		// Open up the file
-		jsonFile, err := os.Open("data/items.json")
+		jsonFile, err := os.Open(o.config.DataSource)
 		if err != nil {
 			log.Fatal(err)
 		}
@@ -43,13 +50,20 @@ func (o *Optimizer) GetRecipe(itemName ItemName) (Recipe, bool) {
 			o.recipeMap[v.OutputItem] = v
 		}
 	})
+}
 
+func (o *Optimizer) GetRecipe(itemName ItemName) (Recipe, bool) {
 	result, ok := o.recipeMap[itemName]
 	return result, ok
 }
 
-func (o *Optimizer) GetOptimalRecipe(itemName ItemName, craftingSpeed float32, parentItemName ItemName) []ComputedRecipe {
+func (o *Optimizer) GetOptimalRecipe(itemName ItemName, craftingSpeed float32, parentItemName ItemName, seenRecipes map[ItemName]bool) []ComputedRecipe {
 	computedRecipes := []ComputedRecipe{}
+	if seenRecipes[itemName] {
+		return computedRecipes
+	}
+	seenRecipes[itemName] = true
+
 	recipe, ok := o.GetRecipe(itemName)
 
 	if ok {
@@ -73,7 +87,11 @@ func (o *Optimizer) GetOptimalRecipe(itemName ItemName, craftingSpeed float32, p
 
 		for materialName, materialCountPerSec := range computedRecipe.ItemsConsumedPerSec {
 			targetCraftingSpeed := materialCountPerSec
-			cr := o.GetOptimalRecipe(materialName, targetCraftingSpeed, recipe.OutputItem)
+			seenRecipesCopy := make(map[ItemName]bool)
+			for k, v := range seenRecipes {
+				seenRecipesCopy[k] = v
+			}
+			cr := o.GetOptimalRecipe(materialName, targetCraftingSpeed, recipe.OutputItem, seenRecipesCopy)
 			computedRecipes = append(computedRecipes, cr...)
 		}
 	}

@@ -1,0 +1,11 @@
+[
+    {
+        "OutputItem": "Loopy item",
+        "OutputItemCount": 1,
+        "Facility": "Smelting facility",
+        "Time": 1,
+        "Materials": {
+            "Loopy item": 1
+        }
+    }
+]

@@ -10,7 +10,9 @@ import (
 func main() {
 	log.Println("Starting DSP Optimizer Program")
 	fmt.Println("Initializing")
-	optimizer := dsp.NewOptimizer()
+	optimizer := dsp.NewOptimizer(dsp.OptimizerConfig{
+		DataSource: "data/items.json",
+	})
 	fmt.Println(optimizer.GetRecipe(dsp.ItemName("asdf")))
 
 	recipe := []dsp.ComputedRecipe{}
@@ -24,7 +26,7 @@ func main() {
 	// recipe = recipe.concat(getRecipeForItem('Sorter MK.III', 0.5));
 	// recipe = recipe.concat(getRecipeForItem('Graphene', 4));
 
-	recipe = append(recipe, optimizer.GetOptimalRecipe("Conveyor belt MK.II", 1, "")...)
+	recipe = append(recipe, optimizer.GetOptimalRecipe("Conveyor belt MK.II", 1, "", map[dsp.ItemName]bool{})...)
 
 	// function combineRecipes(recipes) {
 	//   const uniqueRecipes = {};
