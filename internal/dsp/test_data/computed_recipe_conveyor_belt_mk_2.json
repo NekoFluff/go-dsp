@@ -1,0 +1,185 @@
+[
+    {
+            "OutputItem": "Conveyor belt MK.II",
+            "Facility": "Assembler",
+            "NumFacilitiesNeeded": 0.33333334,
+            "ItemsConsumedPerSec": {
+                    "Conveyor belt MK.I": 1,
+                    "Electromagnetic turbine": 0.33333334
+            },
+            "SecondsSpentPerCraft": 1,
+            "CraftingPerSec": 1,
+            "UsedFor": ""
+    },
+    {
+            "OutputItem": "Conveyor belt MK.I",
+            "Facility": "Assembler",
+            "NumFacilitiesNeeded": 0.33333334,
+            "ItemsConsumedPerSec": {
+                    "Gear": 0.6666667,
+                    "Iron ingot": 0.6666667
+            },
+            "SecondsSpentPerCraft": 1,
+            "CraftingPerSec": 1,
+            "UsedFor": "Conveyor belt MK.II"
+    },
+    {
+            "OutputItem": "Iron ingot",
+            "Facility": "Smelting facility",
+            "NumFacilitiesNeeded": 0.6666667,
+            "ItemsConsumedPerSec": {
+                    "Iron ore": 0.6666667
+            },
+            "SecondsSpentPerCraft": 1,
+            "CraftingPerSec": 0.6666667,
+            "UsedFor": "Conveyor belt MK.I"
+    },
+    {
+            "OutputItem": "Gear",
+            "Facility": "Assembler",
+            "NumFacilitiesNeeded": 0.6666667,
+            "ItemsConsumedPerSec": {
+                    "Iron ingot": 0.6666667
+            },
+            "SecondsSpentPerCraft": 1,
+            "CraftingPerSec": 0.6666667,
+            "UsedFor": "Conveyor belt MK.I"
+    },
+    {
+            "OutputItem": "Iron ingot",
+            "Facility": "Smelting facility",
+            "NumFacilitiesNeeded": 0.6666667,
+            "ItemsConsumedPerSec": {
+                    "Iron ore": 0.6666667
+            },
+            "SecondsSpentPerCraft": 1,
+            "CraftingPerSec": 0.6666667,
+            "UsedFor": "Gear"
+    },
+    {
+            "OutputItem": "Electromagnetic turbine",
+            "Facility": "Assembler",
+            "NumFacilitiesNeeded": 0.6666667,
+            "ItemsConsumedPerSec": {
+                    "Electric motor": 0.6666667,
+                    "Magnetic coil": 0.6666667
+            },
+            "SecondsSpentPerCraft": 2,
+            "CraftingPerSec": 0.33333334,
+            "UsedFor": "Conveyor belt MK.II"
+    },
+    {
+            "OutputItem": "Electric motor",
+            "Facility": "Assembler",
+            "NumFacilitiesNeeded": 1.3333334,
+            "ItemsConsumedPerSec": {
+                    "Gear": 1.3333334,
+                    "Iron ingot": 1.3333334,
+                    "Magnetic coil": 1.3333334
+            },
+            "SecondsSpentPerCraft": 2,
+            "CraftingPerSec": 0.6666667,
+            "UsedFor": "Electromagnetic turbine"
+    },
+    {
+            "OutputItem": "Iron ingot",
+            "Facility": "Smelting facility",
+            "NumFacilitiesNeeded": 1.3333334,
+            "ItemsConsumedPerSec": {
+                    "Iron ore": 1.3333334
+            },
+            "SecondsSpentPerCraft": 1,
+            "CraftingPerSec": 1.3333334,
+            "UsedFor": "Electric motor"
+    },
+    {
+            "OutputItem": "Gear",
+            "Facility": "Assembler",
+            "NumFacilitiesNeeded": 1.3333334,
+            "ItemsConsumedPerSec": {
+                    "Iron ingot": 1.3333334
+            },
+            "SecondsSpentPerCraft": 1,
+            "CraftingPerSec": 1.3333334,
+            "UsedFor": "Electric motor"
+    },
+    {
+            "OutputItem": "Iron ingot",
+            "Facility": "Smelting facility",
+            "NumFacilitiesNeeded": 1.3333334,
+            "ItemsConsumedPerSec": {
+                    "Iron ore": 1.3333334
+            },
+            "SecondsSpentPerCraft": 1,
+            "CraftingPerSec": 1.3333334,
+            "UsedFor": "Gear"
+    },
+    {
+            "OutputItem": "Magnetic coil",
+            "Facility": "Assembler",
+            "NumFacilitiesNeeded": 0.6666667,
+            "ItemsConsumedPerSec": {
+                    "Copper ingot": 0.6666667,
+                    "Magnet": 1.3333334
+            },
+            "SecondsSpentPerCraft": 1,
+            "CraftingPerSec": 1.3333334,
+            "UsedFor": "Electric motor"
+    },
+    {
+            "OutputItem": "Magnet",
+            "Facility": "Smelting facility",
+            "NumFacilitiesNeeded": 2,
+            "ItemsConsumedPerSec": {
+                    "Iron ore": 1.3333334
+            },
+            "SecondsSpentPerCraft": 1.5,
+            "CraftingPerSec": 1.3333334,
+            "UsedFor": "Magnetic coil"
+    },
+    {
+            "OutputItem": "Copper ingot",
+            "Facility": "Smelting facility",
+            "NumFacilitiesNeeded": 0.6666667,
+            "ItemsConsumedPerSec": {
+                    "Copper ore": 0.6666667
+            },
+            "SecondsSpentPerCraft": 1,
+            "CraftingPerSec": 0.6666667,
+            "UsedFor": "Magnetic coil"
+    },
+    {
+            "OutputItem": "Magnetic coil",
+            "Facility": "Assembler",
+            "NumFacilitiesNeeded": 0.33333334,
+            "ItemsConsumedPerSec": {
+                    "Copper ingot": 0.33333334,
+                    "Magnet": 0.6666667
+            },
+            "SecondsSpentPerCraft": 1,
+            "CraftingPerSec": 0.6666667,
+            "UsedFor": "Electromagnetic turbine"
+    },
+    {
+            "OutputItem": "Magnet",
+            "Facility": "Smelting facility",
+            "NumFacilitiesNeeded": 1,
+            "ItemsConsumedPerSec": {
+                    "Iron ore": 0.6666667
+            },
+            "SecondsSpentPerCraft": 1.5,
+            "CraftingPerSec": 0.6666667,
+            "UsedFor": "Magnetic coil"
+    },
+    {
+            "OutputItem": "Copper ingot",
+            "Facility": "Smelting facility",
+            "NumFacilitiesNeeded": 0.33333334,
+            "ItemsConsumedPerSec": {
+                    "Copper ore": 0.33333334
+            },
+            "SecondsSpentPerCraft": 1,
+            "CraftingPerSec": 0.33333334,
+            "UsedFor": "Magnetic coil"
+    }
+]
