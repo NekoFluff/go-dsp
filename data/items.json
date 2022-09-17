@@ -1,0 +1,323 @@
+[
+    {
+        "OutputItem": "Iron ingot",
+        "OutputItemCount": 1,
+        "Facility": "Smelting facility",
+        "Time": 1,
+        "Materials": {
+            "Iron ore": 1
+        }
+    },
+    {
+        "OutputItem": "Glass",
+        "OutputItemCount": 1,
+        "Facility": "Smelting facility",
+        "Time": 2,
+        "Materials": {
+            "Stone": 2
+        }
+    },
+    {
+        "OutputItem": "Prism",
+        "OutputItemCount": 2,
+        "Facility": "Smelting facility",
+        "Time": 2,
+        "Materials": {
+            "Glass": 3
+        }
+    },
+    {
+        "OutputItem": "Copper ingot",
+        "OutputItemCount": 1,
+        "Facility": "Smelting facility",
+        "Time": 1,
+        "Materials": {
+            "Copper ore": 1
+        }
+    },
+    {
+        "OutputItem": "Stone brick",
+        "OutputItemCount": 1,
+        "Facility": "Smelting facility",
+        "Time": 1,
+        "Materials": {
+            "Stone": 1
+        }
+    },
+    {
+        "OutputItem": "Energetic graphite",
+        "OutputItemCount": 1,
+        "Facility": "Smelting facility",
+        "Time": 2,
+        "Materials": {
+            "Coal": 2
+        }
+    },
+    {
+        "OutputItem": "Hydrogen",
+        "OutputItemCount": 1,
+        "Facility": "Oil refinery",
+        "Time": 4,
+        "Materials": {
+            "Oil": 2
+        }
+    },
+    {
+        "OutputItem": "Refined oil",
+        "OutputItemCount": 2,
+        "Facility": "Oil refinery",
+        "Time": 4,
+        "Materials": {
+            "Crude oil": 2
+        }
+    },
+    {
+        "OutputItem": "Plastic",
+        "OutputItemCount": 1,
+        "Facility": "Chemical facility",
+        "Time": 3,
+        "Materials": {
+            "Hyrogen": 2,
+            "Energetic graphite": 1
+        }
+    },
+    {
+        "OutputItem": "Graphene",
+        "OutputItemCount": 2,
+        "Facility": "Chemical facility",
+        "Time": 3,
+        "Materials": {
+            "Energetic graphite": 3,
+            "Sulfur": 1
+        }
+    },
+    {
+        "OutputItem": "High-purity silicon",
+        "OutputItemCount": 1,
+        "Facility": "Smelting facility",
+        "Time": 2,
+        "Materials": {
+            "Silicon ore": 2
+        }
+    },
+    {
+        "OutputItem": "Magnetic coil",
+        "OutputItemCount": 2,
+        "Facility": "Assembler",
+        "Time": 1,
+        "Materials": {
+            "Magnet": 2,
+            "Copper ingot": 1
+        }
+    },
+    {
+        "OutputItem": "Electric motor",
+        "OutputItemCount": 1,
+        "Facility": "Assembler",
+        "Time": 2,
+        "Materials": {
+            "Iron ingot": 2,
+            "Gear": 2,
+            "Magnetic coil": 2
+        }
+    },
+    {
+        "OutputItem": "Electromagnetic turbine",
+        "OutputItemCount": 1,
+        "Facility": "Assembler",
+        "Time": 2,
+        "Materials": {
+            "Electric motor": 2,
+            "Magnetic coil": 2
+        }
+    },
+    {
+        "OutputItem": "Circuit board",
+        "OutputItemCount": 2,
+        "Facility": "Assembler",
+        "Time": 1,
+        "Materials": {
+            "Iron ingot": 2,
+            "Copper ingot": 1
+        }
+    },
+    {
+        "OutputItem": "Processor",
+        "OutputItemCount": 1,
+        "Facility": "Assembler",
+        "Time": 3,
+        "Materials": {
+            "Circuit board": 2,
+            "Microcrystalline component": 2
+        }
+    },
+    {
+        "OutputItem": "Microcrystalline component",
+        "OutputItemCount": 1,
+        "Facility": "Assembler",
+        "Time": 2,
+        "Materials": {
+            "High-purity silicon": 2,
+            "Copper ingot": 1
+        }
+    },
+    {
+        "OutputItem": "Sulfur",
+        "OutputItemCount": 4,
+        "Facility": "Chemical facility",
+        "Time": 6,
+        "Materials": {
+            "Refined oil": 6,
+            "Stone": 8,
+            "Water": 4
+        }
+    },
+    {
+        "OutputItem": "Silicon ore",
+        "OutputItemCount": 1,
+        "Facility": "Smelting facility",
+        "Time": 10,
+        "Materials": {
+            "Stone": 10
+        }
+    },
+    {
+        "OutputItem": "Magnet",
+        "OutputItemCount": 1,
+        "Facility": "Smelting facility",
+        "Time": 1.5,
+        "Materials": {
+            "Iron ore": 1
+        }
+    },
+    {
+        "OutputItem": "Steel",
+        "OutputItemCount": 1,
+        "Facility": "Smelting facility",
+        "Time": 3,
+        "Materials": {
+            "Iron ingot": 3
+        }
+    },
+    {
+        "OutputItem": "Gear",
+        "OutputItemCount": 1,
+        "Facility": "Assembler",
+        "Time": 1,
+        "Materials": {
+            "Iron ingot": 1
+        }
+    },
+    {
+        "OutputItem": "Plasma Exciter",
+        "OutputItemCount": 1,
+        "Facility": "Assembler",
+        "Time": 2,
+        "Materials": {
+            "Magnetic coil": 4,
+            "Prism": 2
+        }
+    },
+    {
+        "OutputItem": "Electromagnetic matrix",
+        "OutputItemCount": 1,
+        "Facility": "Research facility",
+        "Time": 3,
+        "Materials": {
+            "Magnetic coil": 2,
+            "Circuit board": 1
+        }
+    },
+    {
+        "OutputItem": "Energy matrix",
+        "OutputItemCount": 1,
+        "Facility": "Research facility",
+        "Time": 6,
+        "Materials": {
+            "Energetic graphite": 2,
+            "Hyrogen": 2
+        }
+    },
+    {
+        "OutputItem": "Foundation",
+        "OutputItemCount": 1,
+        "Facility": "Assembler",
+        "Time": 1,
+        "Materials": {
+            "Stone brick": 3,
+            "Steel": 1
+        }
+    },
+    {
+        "OutputItem": "Conveyor belt MK.I",
+        "OutputItemCount": 3,
+        "Facility": "Assembler",
+        "Time": 1,
+        "Materials": {
+            "Iron ingot": 2,
+            "Gear": 2
+        }
+    },
+    {
+        "OutputItem": "Conveyor belt MK.II",
+        "OutputItemCount": 3,
+        "Facility": "Assembler",
+        "Time": 1,
+        "Materials": {
+            "Conveyor belt MK.I": 3,
+            "Electromagnetic turbine": 1
+        }
+    },
+    {
+        "OutputItem": "Sorter MK.I",
+        "OutputItemCount": 1,
+        "Facility": "Assembler",
+        "Time": 1,
+        "Materials": {
+            "Iron ingot": 1,
+            "Circuit board": 1
+        }
+    },
+    {
+        "OutputItem": "Sorter MK.II",
+        "OutputItemCount": 2,
+        "Facility": "Assembler",
+        "Time": 1,
+        "Materials": {
+            "Sorter MK.I": 2,
+            "Electric motor": 1
+        }
+    },
+    {
+        "OutputItem": "Sorter MK.III",
+        "OutputItemCount": 2,
+        "Facility": "Assembler",
+        "Time": 1,
+        "Materials": {
+            "Sorter MK.II": 2,
+            "Electromagnetic turbine": 1
+        }
+    },
+    {
+        "OutputItem": "Assembling machine MK.I",
+        "OutputItemCount": 1,
+        "Facility": "Assembler",
+        "Time": 2,
+        "Materials": {
+            "Iron ingot": 4,
+            "Gear": 8,
+            "Circuit board": 4
+        }
+    },
+    {
+        "OutputItem": "Assembling machine MK.II",
+        "OutputItemCount": 1,
+        "Facility": "Assembler",
+        "Time": 3,
+        "Materials": {
+            "Assembling machine MK.I": 1,
+            "Graphene": 8,
+            "Processor": 4
+        }
+    }
+]
