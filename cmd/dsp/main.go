@@ -3,8 +3,9 @@ package main
 import (
 	"encoding/json"
 	"fmt"
-	"go-dsp/internal/dsp"
 	"log"
+
+	"github.com/NekoFluff/go-dsp/internal/dsp"
 )
 
 func main() {

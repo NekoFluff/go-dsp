@@ -1,4 +1,4 @@
-module go-dsp
+module github.com/NekoFluff/go-dsp
 
 go 1.17
 
