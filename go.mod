@@ -1,4 +1,4 @@
-module dsp
+module go-dsp
 
 go 1.17
 
