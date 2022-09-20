@@ -1,9 +1,9 @@
 package main
 
 import (
-	"dsp/internal/dsp"
 	"encoding/json"
 	"fmt"
+	"go-dsp/internal/dsp"
 	"log"
 )
 
