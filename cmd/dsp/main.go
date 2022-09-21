@@ -5,7 +5,7 @@ import (
 	"fmt"
 	"log"
 
-	"github.com/NekoFluff/go-dsp/internal/dsp"
+	"github.com/NekoFluff/go-dsp/dsp"
 )
 
 func main() {
