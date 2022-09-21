@@ -41,7 +41,7 @@ func sortRecipes(recipes []ComputedRecipe) {
 
 func TestDSP_Optimizer_E2E_ConveyorBeltMKII(t *testing.T) {
 	o := NewOptimizer(OptimizerConfig{
-		DataSource: "../../data/items.json",
+		DataSource: "../data/items.json",
 	})
 	expectedRecipes := []ComputedRecipe{}
 	f, err := os.ReadFile("test_data/computed_recipe_conveyor_belt_mk_2.json")
