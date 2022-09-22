@@ -33,8 +33,10 @@ func sortRecipes(recipes []ComputedRecipe) {
 	sort.SliceStable(recipes, func(i, j int) bool {
 		if recipes[i].OutputItem != recipes[j].OutputItem {
 			return recipes[i].OutputItem < recipes[j].OutputItem
-		} else {
+		} else if recipes[i].UsedFor != recipes[j].UsedFor {
 			return recipes[i].UsedFor < recipes[j].UsedFor
+		} else {
+			return recipes[i].CraftingPerSec < recipes[j].CraftingPerSec
 		}
 	})
 }
