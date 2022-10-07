@@ -14,7 +14,7 @@ func main() {
 	optimizer := dsp.NewOptimizer(dsp.OptimizerConfig{
 		DataSource: "data/items.json",
 	})
-	fmt.Println(optimizer.GetRecipe(dsp.ItemName("asdf")))
+	// fmt.Println(optimizer.GetRecipe(dsp.ItemName("Iron Ingot")))
 
 	recipe := []dsp.ComputedRecipe{}
 

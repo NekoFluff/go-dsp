@@ -2,9 +2,11 @@ package dsp
 
 import (
 	"encoding/json"
+	"fmt"
 	"io/ioutil"
 	"log"
 	"os"
+	"strings"
 	"sync"
 )
 
@@ -47,13 +49,15 @@ func (o *Optimizer) loadRecipes() {
 
 		// Map the recipe
 		for _, v := range recipe {
-			o.recipeMap[v.OutputItem] = v
+			name := ItemName(strings.ToLower(string(v.OutputItem)))
+			o.recipeMap[name] = v
 		}
 	})
 }
 
 func (o *Optimizer) GetRecipe(itemName ItemName) (Recipe, bool) {
-	result, ok := o.recipeMap[itemName]
+	name := ItemName(strings.ToLower(string(itemName)))
+	result, ok := o.recipeMap[name]
 	return result, ok
 }
 
@@ -67,12 +71,15 @@ func (o *Optimizer) GetRecipes() []Recipe {
 
 func (o *Optimizer) GetOptimalRecipe(itemName ItemName, craftingSpeed float32, parentItemName ItemName, seenRecipes map[ItemName]bool) []ComputedRecipe {
 	computedRecipes := []ComputedRecipe{}
+	fmt.Println(itemName)
+
 	if seenRecipes[itemName] {
 		return computedRecipes
 	}
 	seenRecipes[itemName] = true
 
 	recipe, ok := o.GetRecipe(itemName)
+	fmt.Println(recipe, ok)
 
 	if ok {
 		consumedMats := make(map[ItemName]float32)
