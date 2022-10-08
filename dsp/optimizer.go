@@ -2,9 +2,9 @@ package dsp
 
 import (
 	"encoding/json"
-	"fmt"
 	"io/ioutil"
 	"log"
+	"math"
 	"os"
 	"strings"
 	"sync"
@@ -69,9 +69,9 @@ func (o *Optimizer) GetRecipes() []Recipe {
 	return recipes
 }
 
-func (o *Optimizer) GetOptimalRecipe(itemName ItemName, craftingSpeed float32, parentItemName ItemName, seenRecipes map[ItemName]bool) []ComputedRecipe {
+func (o *Optimizer) GetOptimalRecipe(itemName ItemName, craftingSpeed float64, parentItemName ItemName, seenRecipes map[ItemName]bool, depth int) []ComputedRecipe {
 	computedRecipes := []ComputedRecipe{}
-	fmt.Println(itemName)
+	// fmt.Println(itemName)
 
 	if seenRecipes[itemName] {
 		return computedRecipes
@@ -79,14 +79,18 @@ func (o *Optimizer) GetOptimalRecipe(itemName ItemName, craftingSpeed float32, p
 	seenRecipes[itemName] = true
 
 	recipe, ok := o.GetRecipe(itemName)
-	fmt.Println(recipe, ok)
+	// fmt.Println(recipe, ok)
 
 	if ok {
-		consumedMats := make(map[ItemName]float32)
+		consumedMats := make(map[ItemName]float64)
 		numberOfFacilitiesNeeded := recipe.Time * craftingSpeed / recipe.OutputItemCount
 
 		for materialName, materialCount := range recipe.Materials {
-			consumedMats[materialName] = materialCount * numberOfFacilitiesNeeded / recipe.Time
+			c := materialCount * numberOfFacilitiesNeeded / recipe.Time
+			if math.IsNaN(float64(c)) {
+				c = 0.0
+			}
+			consumedMats[materialName] = c
 		}
 
 		computedRecipe := ComputedRecipe{
@@ -97,6 +101,7 @@ func (o *Optimizer) GetOptimalRecipe(itemName ItemName, craftingSpeed float32, p
 			SecondsSpentPerCraft: recipe.Time,
 			CraftingPerSec:       craftingSpeed,
 			UsedFor:              parentItemName,
+			Depth:                depth,
 		}
 		computedRecipes = append(computedRecipes, computedRecipe)
 
@@ -106,7 +111,7 @@ func (o *Optimizer) GetOptimalRecipe(itemName ItemName, craftingSpeed float32, p
 			for k, v := range seenRecipes {
 				seenRecipesCopy[k] = v
 			}
-			cr := o.GetOptimalRecipe(materialName, targetCraftingSpeed, recipe.OutputItem, seenRecipesCopy)
+			cr := o.GetOptimalRecipe(materialName, targetCraftingSpeed, recipe.OutputItem, seenRecipesCopy, depth+1)
 			computedRecipes = append(computedRecipes, cr...)
 		}
 	}

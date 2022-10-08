@@ -4,20 +4,23 @@ import (
 	"encoding/json"
 	"fmt"
 	"log"
+	"math"
+	"os"
+	"sort"
+	"strings"
 
 	"github.com/NekoFluff/go-dsp/dsp"
 )
 
 func main() {
 	log.Println("Starting DSP Optimizer Program")
-	fmt.Println("Initializing")
 	optimizer := dsp.NewOptimizer(dsp.OptimizerConfig{
 		DataSource: "data/items.json",
 	})
 	// fmt.Println(optimizer.GetRecipe(dsp.ItemName("Iron Ingot")))
 
-	recipe := []dsp.ComputedRecipe{}
-
+	recipes := []dsp.ComputedRecipe{}
+	recipeName := dsp.ItemName("Deuteron Fuel Rod")
 	// recipe = recipe.concat(getRecipeForItem('Electromagnetic matrix', 2));
 	// recipe = recipe.concat(getRecipeForItem('Energy matrix', 2));
 	// // recipe = recipe.concat(getRecipeForItem('Plastic', 2));
@@ -27,37 +30,84 @@ func main() {
 	// recipe = recipe.concat(getRecipeForItem('Sorter MK.III', 0.5));
 	// recipe = recipe.concat(getRecipeForItem('Graphene', 4));
 
-	recipe = append(recipe, optimizer.GetOptimalRecipe("Conveyor belt MK.II", 1, "", map[dsp.ItemName]bool{})...)
+	// recipe = append(recipe, optimizer.GetOptimalRecipe("Conveyor belt MK.II", 1, "", map[dsp.ItemName]bool{})...)
+	recipes = append(recipes, optimizer.GetOptimalRecipe(recipeName, 1, "", map[dsp.ItemName]bool{}, 1)...)
+	recipes = combineRecipes(recipes)
 
-	// function combineRecipes(recipes) {
-	//   const uniqueRecipes = {};
+	// Sort
+	sortRecipes(recipes)
 
-	//   recipes.forEach(recipe => {
-	//     if (uniqueRecipes[recipe['Produce']]) { // combine recipe objects
+	// Print out
+	jsonStr, err := json.MarshalIndent(recipes, "", "\t")
+	if err != nil {
+		fmt.Println(err)
+	}
 
-	//       const old_num = uniqueRecipes[recipe['Produce']]['NumFacilitiesNeeded'];
-	//       const new_num = recipe['NumFacilitiesNeeded'];
-	//       const total_num = old_num + new_num;
+	fileName := strings.ToLower(strings.TrimSpace(string(recipeName)))
+	fileName = strings.ReplaceAll(fileName, " ", "_")
 
-	//       for (const [materialName, perSecConsumption] of Object.entries(uniqueRecipes[recipe['Produce']]['ItemsConsumedPerSec'])) {
-	//         uniqueRecipes[recipe['Produce']]['ItemsConsumedPerSec'][materialName] = perSecConsumption + recipe['ItemsConsumedPerSec'][materialName]
-	//       }
+	err = os.WriteFile("dsp_output_"+fileName+".json", jsonStr, 0644)
+	if err != nil {
+		fmt.Println("Failed to write to output.json", err)
+	}
+	log.Println("Output to output.json")
+}
 
-	//       uniqueRecipes[recipe['Produce']]['SecondsSpentPerCraft'] = (uniqueRecipes[recipe['Produce']]['SecondsSpentPerCraft'] * old_num + recipe['SecondsSpentPerCraft'] * new_num) / total_num;
-	//       uniqueRecipes[recipe['Produce']]['CraftingPerSec'] = uniqueRecipes[recipe['Produce']]['CraftingPerSec'] + recipe['CraftingPerSec'];
-	//       uniqueRecipes[recipe['Produce']]['For'] = uniqueRecipes[recipe['Produce']]['For'].concat(recipe['For']);
-	//       uniqueRecipes[recipe['Produce']]['For'] = uniqueRecipes[recipe['Produce']]['For'].filter((v, i, a) => a.indexOf(v) === i); // get unique values
-	//       uniqueRecipes[recipe['Produce']]['NumFacilitiesNeeded'] += recipe['NumFacilitiesNeeded'];
+func combineRecipes(recipes []dsp.ComputedRecipe) []dsp.ComputedRecipe {
+	uniqueRecipes := make(map[dsp.ItemName]dsp.ComputedRecipe)
 
-	//     } else { // add recipe object
-	//       uniqueRecipes[recipe['Produce']] = recipe;
-	//     }
-	//   });
+	for _, recipe := range recipes {
+		if uRecipe, ok := uniqueRecipes[recipe.OutputItem]; ok { // combine recipe objects
 
-	//   return Object.values(uniqueRecipes);
-	// }
+			old_num := uRecipe.NumFacilitiesNeeded
+			new_num := recipe.NumFacilitiesNeeded
+			total_num := old_num + new_num
+			for materialName, perSecConsumption := range uRecipe.ItemsConsumedPerSec {
+				uRecipe.ItemsConsumedPerSec[materialName] = perSecConsumption + recipe.ItemsConsumedPerSec[materialName]
+			}
 
-	// const uniqueRecipes = combineRecipes(recipe);
-	jsonStr, _ := json.MarshalIndent(recipe, "", "\t")
-	fmt.Println(string(jsonStr))
+			sspc := (uRecipe.SecondsSpentPerCraft*old_num + recipe.SecondsSpentPerCraft*new_num) / total_num
+			if math.IsNaN(float64(sspc)) {
+				sspc = 0.0
+			}
+			uRecipe.SecondsSpentPerCraft = sspc
+
+			uRecipe.CraftingPerSec = uRecipe.CraftingPerSec + recipe.CraftingPerSec
+			uRecipe.UsedFor = uRecipe.UsedFor + " | " + recipe.UsedFor
+			// uRecipe.UsedFor = uRecipe.UsedFor.filter((v, i, a) => a.indexOf(v) === i); // get unique values
+			uRecipe.NumFacilitiesNeeded += recipe.NumFacilitiesNeeded
+			uRecipe.Depth = max(uRecipe.Depth, recipe.Depth)
+			uniqueRecipes[recipe.OutputItem] = uRecipe
+
+		} else { // add recipe object
+			uniqueRecipes[recipe.OutputItem] = recipe
+		}
+	}
+
+	v := []dsp.ComputedRecipe{}
+	for _, value := range uniqueRecipes {
+		v = append(v, value)
+	}
+	return v
+}
+
+func sortRecipes(recipes []dsp.ComputedRecipe) {
+	sort.SliceStable(recipes, func(i, j int) bool {
+		if recipes[i].Depth != recipes[j].Depth {
+			return recipes[i].Depth < recipes[j].Depth
+		} else if recipes[i].OutputItem != recipes[j].OutputItem {
+			return recipes[i].OutputItem < recipes[j].OutputItem
+		} else if recipes[i].UsedFor != recipes[j].UsedFor {
+			return recipes[i].UsedFor < recipes[j].UsedFor
+		} else {
+			return recipes[i].CraftingPerSec < recipes[j].CraftingPerSec
+		}
+	})
+}
+
+func max(x, y int) int {
+	if x < y {
+		return y
+	}
+	return x
 }
