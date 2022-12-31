@@ -20,7 +20,7 @@ func main() {
 	// fmt.Println(optimizer.GetRecipe(dsp.ItemName("Iron Ingot")))
 
 	recipes := []dsp.ComputedRecipe{}
-	recipeName := dsp.ItemName("Deuteron Fuel Rod")
+	recipeName := dsp.ItemName("Proliferator Mk.III")
 	// recipe = recipe.concat(getRecipeForItem('Electromagnetic matrix', 2));
 	// recipe = recipe.concat(getRecipeForItem('Energy matrix', 2));
 	// // recipe = recipe.concat(getRecipeForItem('Plastic', 2));
@@ -31,7 +31,7 @@ func main() {
 	// recipe = recipe.concat(getRecipeForItem('Graphene', 4));
 
 	// recipe = append(recipe, optimizer.GetOptimalRecipe("Conveyor belt MK.II", 1, "", map[dsp.ItemName]bool{})...)
-	recipes = append(recipes, optimizer.GetOptimalRecipe(recipeName, 1, "", map[dsp.ItemName]bool{}, 1)...)
+	recipes = append(recipes, optimizer.GetOptimalRecipe(recipeName, 4, "", map[dsp.ItemName]bool{}, 1)...)
 	recipes = combineRecipes(recipes)
 
 	// Sort
@@ -50,6 +50,8 @@ func main() {
 	if err != nil {
 		fmt.Println("Failed to write to output.json", err)
 	}
+	_ = os.WriteFile("dsp_output.json", jsonStr, 0644)
+
 	log.Println("Output to output.json")
 }
 
@@ -73,13 +75,14 @@ func combineRecipes(recipes []dsp.ComputedRecipe) []dsp.ComputedRecipe {
 			uRecipe.SecondsSpentPerCraft = sspc
 
 			uRecipe.CraftingPerSec = uRecipe.CraftingPerSec + recipe.CraftingPerSec
-			uRecipe.UsedFor = uRecipe.UsedFor + " | " + recipe.UsedFor
+			uRecipe.UsedFor = dsp.ItemName(fmt.Sprintf("%s | %s (Uses %0.2f/s)", uRecipe.UsedFor, recipe.UsedFor, recipe.CraftingPerSec))
 			// uRecipe.UsedFor = uRecipe.UsedFor.filter((v, i, a) => a.indexOf(v) === i); // get unique values
 			uRecipe.NumFacilitiesNeeded += recipe.NumFacilitiesNeeded
 			uRecipe.Depth = max(uRecipe.Depth, recipe.Depth)
 			uniqueRecipes[recipe.OutputItem] = uRecipe
 
 		} else { // add recipe object
+			recipe.UsedFor = dsp.ItemName(fmt.Sprintf("%s (Uses %0.2f/s)", recipe.UsedFor, recipe.CraftingPerSec))
 			uniqueRecipes[recipe.OutputItem] = recipe
 		}
 	}

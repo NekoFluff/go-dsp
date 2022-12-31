@@ -4,7 +4,7 @@
 		"OutputItem": "Magnet",
 		"OutputItemCount": 1,
 		"Facility": "Arc Smelter",
-		"Time": 1,
+		"Time": 1.5,
 		"Materials": {
 			"Iron Ore": 1
 		}
@@ -87,15 +87,6 @@
 		}
 	},
 	{
-		"OutputItem": "Carbon Nanotube",
-		"OutputItemCount": 2,
-		"Facility": "Chemical Plant",
-		"Time": 4,
-		"Materials": {
-			"Spiniform Stalagmite Crystal": 6
-		}
-	},
-	{
 		"OutputItem": "Logistics Vessel",
 		"OutputItemCount": 1,
 		"Facility": "Assembling Machine Mk.I",
@@ -113,15 +104,6 @@
 		"Time": 2,
 		"Materials": {
 			"Stone Ore Vein": 1
-		}
-	},
-	{
-		"OutputItem": "Spiniform Stalagmite Crystal",
-		"OutputItemCount": 1,
-		"Facility": "Mining Machine",
-		"Time": 2,
-		"Materials": {
-			"Spiniform Stalagmite Crystal Vein": 1
 		}
 	},
 	{
@@ -211,15 +193,6 @@
 		}
 	},
 	{
-		"OutputItem": "Fractal Silicon",
-		"OutputItemCount": 1,
-		"Facility": "Mining Machine",
-		"Time": 2,
-		"Materials": {
-			"Fractal Silicon Vein": 1
-		}
-	},
-	{
 		"OutputItem": "Dyson Sphere Component",
 		"OutputItemCount": 1,
 		"Facility": "Assembling Machine Mk.I",
@@ -283,7 +256,7 @@
 		"OutputItem": "Proliferator Mk.I",
 		"OutputItemCount": 1,
 		"Facility": "Assembling Machine Mk.I",
-		"Time": 0,
+		"Time": 0.5,
 		"Materials": {
 			"Coal": 1
 		}
@@ -327,15 +300,6 @@
 		"Time": 2,
 		"Materials": {
 			"High-Purity Silicon": 1
-		}
-	},
-	{
-		"OutputItem": "Crystal Silicon",
-		"OutputItemCount": 2,
-		"Facility": "Assembling Machine Mk.I",
-		"Time": 1,
-		"Materials": {
-			"Fractal Silicon": 1
 		}
 	},
 	{
@@ -889,19 +853,6 @@
 		}
 	},
 	{
-		"OutputItem": "Advanced Mining Machine",
-		"OutputItemCount": 1,
-		"Facility": "Assembling Machine Mk.I",
-		"Time": 20,
-		"Materials": {
-			"Frame Material": 10,
-			"Optical Grating Crystal": 40,
-			"Quantum Chip": 4,
-			"Super-Magnetic Ring": 10,
-			"Titanium Alloy": 20
-		}
-	},
-	{
 		"OutputItem": "Silicon Ore",
 		"OutputItemCount": 1,
 		"Facility": "Mining Machine",
@@ -917,15 +868,6 @@
 		"Time": 10,
 		"Materials": {
 			"Stone": 10
-		}
-	},
-	{
-		"OutputItem": "Optical Grating Crystal",
-		"OutputItemCount": 1,
-		"Facility": "Mining Machine",
-		"Time": 2,
-		"Materials": {
-			"Optical Grating Rock": 1
 		}
 	},
 	{
@@ -967,17 +909,6 @@
 			"Graphene": 2,
 			"Hydrogen": 12,
 			"Titanium Crystal": 1
-		}
-	},
-	{
-		"OutputItem": "Casimir Crystal",
-		"OutputItemCount": 1,
-		"Facility": "Assembling Machine Mk.I",
-		"Time": 4,
-		"Materials": {
-			"Graphene": 2,
-			"Hydrogen": 12,
-			"Optical Grating Crystal": 8
 		}
 	},
 	{
@@ -1121,16 +1052,6 @@
 		"Materials": {
 			"Circuit Board": 1,
 			"Prism": 2
-		}
-	},
-	{
-		"OutputItem": "Photon Combiner",
-		"OutputItemCount": 1,
-		"Facility": "Assembling Machine Mk.I",
-		"Time": 3,
-		"Materials": {
-			"Circuit Board": 1,
-			"Optical Grating Crystal": 1
 		}
 	},
 	{
