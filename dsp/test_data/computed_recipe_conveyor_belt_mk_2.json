@@ -1,273 +1,297 @@
 [
     {
-            "OutputItem": "Conveyor Belt Mk.II",
-            "Facility": "Assembling Machine Mk.I",
-            "NumFacilitiesNeeded": 0.33333334,
-            "ItemsConsumedPerSec": {
-                    "Conveyor Belt Mk.I": 1,
-                    "Electromagnetic Turbine": 0.33333334
-            },
-            "SecondsSpentPerCraft": 1,
-            "CraftingPerSec": 1,
-            "UsedFor": ""
+        "OutputItem": "Conveyor Belt Mk.II",
+        "Facility": "Assembling Machine Mk.I",
+        "NumFacilitiesNeeded": 0.3333333333333333,
+        "ItemsConsumedPerSec": {
+            "Conveyor Belt Mk.I": 1,
+            "Electromagnetic Turbine": 0.3333333333333333
+        },
+        "SecondsSpentPerCraft": 1,
+        "CraftingPerSec": 1,
+        "UsedFor": "",
+        "Depth": 1
     },
     {
-            "OutputItem": "Conveyor Belt Mk.I",
-            "Facility": "Assembling Machine Mk.I",
-            "NumFacilitiesNeeded": 0.33333334,
-            "ItemsConsumedPerSec": {
-                    "Gear": 0.33333334,
-                    "Iron Ingot": 0.6666667
-            },
-            "SecondsSpentPerCraft": 1,
-            "CraftingPerSec": 1,
-            "UsedFor": "Conveyor Belt Mk.II"
+        "OutputItem": "Conveyor Belt Mk.I",
+        "Facility": "Assembling Machine Mk.I",
+        "NumFacilitiesNeeded": 0.3333333333333333,
+        "ItemsConsumedPerSec": {
+            "Gear": 0.3333333333333333,
+            "Iron Ingot": 0.6666666666666666
+        },
+        "SecondsSpentPerCraft": 1,
+        "CraftingPerSec": 1,
+        "UsedFor": "Conveyor Belt Mk.II",
+        "Depth": 2
     },
     {
-            "OutputItem": "Gear",
-            "Facility": "Assembling Machine Mk.I",
-            "NumFacilitiesNeeded": 0.33333334,
-            "ItemsConsumedPerSec": {
-                    "Iron Ingot": 0.33333334
-            },
-            "SecondsSpentPerCraft": 1,
-            "CraftingPerSec": 0.33333334,
-            "UsedFor": "Conveyor Belt Mk.I"
+        "OutputItem": "Electromagnetic Turbine",
+        "Facility": "Assembling Machine Mk.I",
+        "NumFacilitiesNeeded": 0.6666666666666666,
+        "ItemsConsumedPerSec": {
+            "Electric Motor": 0.6666666666666666,
+            "Magnetic Coil": 0.6666666666666666
+        },
+        "SecondsSpentPerCraft": 2,
+        "CraftingPerSec": 0.3333333333333333,
+        "UsedFor": "Conveyor Belt Mk.II",
+        "Depth": 2
     },
     {
-            "OutputItem": "Iron Ingot",
-            "Facility": "Arc Smelter",
-            "NumFacilitiesNeeded": 0.33333334,
-            "ItemsConsumedPerSec": {
-                    "Iron Ore": 0.33333334
-            },
-            "SecondsSpentPerCraft": 1,
-            "CraftingPerSec": 0.33333334,
-            "UsedFor": "Gear"
+        "OutputItem": "Electric Motor",
+        "Facility": "Assembling Machine Mk.I",
+        "NumFacilitiesNeeded": 1.3333333333333333,
+        "ItemsConsumedPerSec": {
+            "Gear": 0.6666666666666666,
+            "Iron Ingot": 1.3333333333333333,
+            "Magnetic Coil": 0.6666666666666666
+        },
+        "SecondsSpentPerCraft": 2,
+        "CraftingPerSec": 0.6666666666666666,
+        "UsedFor": "Electromagnetic Turbine",
+        "Depth": 3
     },
     {
-            "OutputItem": "Iron Ore",
-            "Facility": "Mining Machine",
-            "NumFacilitiesNeeded": 0.6666667,
-            "ItemsConsumedPerSec": {
-                    "Iron Ore Vein": 0.33333334
-            },
-            "SecondsSpentPerCraft": 2,
-            "CraftingPerSec": 0.33333334,
-            "UsedFor": "Iron Ingot"
+        "OutputItem": "Gear",
+        "Facility": "Assembling Machine Mk.I",
+        "NumFacilitiesNeeded": 0.3333333333333333,
+        "ItemsConsumedPerSec": {
+            "Iron Ingot": 0.3333333333333333
+        },
+        "SecondsSpentPerCraft": 1,
+        "CraftingPerSec": 0.3333333333333333,
+        "UsedFor": "Conveyor Belt Mk.I",
+        "Depth": 3
     },
     {
-            "OutputItem": "Iron Ingot",
-            "Facility": "Arc Smelter",
-            "NumFacilitiesNeeded": 0.6666667,
-            "ItemsConsumedPerSec": {
-                    "Iron Ore": 0.6666667
-            },
-            "SecondsSpentPerCraft": 1,
-            "CraftingPerSec": 0.6666667,
-            "UsedFor": "Conveyor Belt Mk.I"
+        "OutputItem": "Iron Ingot",
+        "Facility": "Arc Smelter",
+        "NumFacilitiesNeeded": 0.6666666666666666,
+        "ItemsConsumedPerSec": {
+            "Iron Ore": 0.6666666666666666
+        },
+        "SecondsSpentPerCraft": 1,
+        "CraftingPerSec": 0.6666666666666666,
+        "UsedFor": "Conveyor Belt Mk.I",
+        "Depth": 3
     },
     {
-            "OutputItem": "Iron Ore",
-            "Facility": "Mining Machine",
-            "NumFacilitiesNeeded": 1.3333334,
-            "ItemsConsumedPerSec": {
-                    "Iron Ore Vein": 0.6666667
-            },
-            "SecondsSpentPerCraft": 2,
-            "CraftingPerSec": 0.6666667,
-            "UsedFor": "Iron Ingot"
+        "OutputItem": "Magnetic Coil",
+        "Facility": "Assembling Machine Mk.I",
+        "NumFacilitiesNeeded": 0.3333333333333333,
+        "ItemsConsumedPerSec": {
+            "Copper Ingot": 0.3333333333333333,
+            "Magnet": 0.6666666666666666
+        },
+        "SecondsSpentPerCraft": 1,
+        "CraftingPerSec": 0.6666666666666666,
+        "UsedFor": "Electromagnetic Turbine",
+        "Depth": 3
     },
     {
-            "OutputItem": "Electromagnetic Turbine",
-            "Facility": "Assembling Machine Mk.I",
-            "NumFacilitiesNeeded": 0.6666667,
-            "ItemsConsumedPerSec": {
-                    "Electric Motor": 0.6666667,
-                    "Magnetic Coil": 0.6666667
-            },
-            "SecondsSpentPerCraft": 2,
-            "CraftingPerSec": 0.33333334,
-            "UsedFor": "Conveyor Belt Mk.II"
+        "OutputItem": "Copper Ingot",
+        "Facility": "Arc Smelter",
+        "NumFacilitiesNeeded": 0.3333333333333333,
+        "ItemsConsumedPerSec": {
+            "Copper Ore": 0.3333333333333333
+        },
+        "SecondsSpentPerCraft": 1,
+        "CraftingPerSec": 0.3333333333333333,
+        "UsedFor": "Magnetic Coil",
+        "Depth": 4
     },
     {
-            "OutputItem": "Electric Motor",
-            "Facility": "Assembling Machine Mk.I",
-            "NumFacilitiesNeeded": 1.3333334,
-            "ItemsConsumedPerSec": {
-                    "Gear": 0.6666667,
-                    "Iron Ingot": 1.3333334,
-                    "Magnetic Coil": 0.6666667
-            },
-            "SecondsSpentPerCraft": 2,
-            "CraftingPerSec": 0.6666667,
-            "UsedFor": "Electromagnetic Turbine"
+        "OutputItem": "Gear",
+        "Facility": "Assembling Machine Mk.I",
+        "NumFacilitiesNeeded": 0.6666666666666666,
+        "ItemsConsumedPerSec": {
+            "Iron Ingot": 0.6666666666666666
+        },
+        "SecondsSpentPerCraft": 1,
+        "CraftingPerSec": 0.6666666666666666,
+        "UsedFor": "Electric Motor",
+        "Depth": 4
     },
     {
-            "OutputItem": "Gear",
-            "Facility": "Assembling Machine Mk.I",
-            "NumFacilitiesNeeded": 0.6666667,
-            "ItemsConsumedPerSec": {
-                    "Iron Ingot": 0.6666667
-            },
-            "SecondsSpentPerCraft": 1,
-            "CraftingPerSec": 0.6666667,
-            "UsedFor": "Electric Motor"
+        "OutputItem": "Iron Ingot",
+        "Facility": "Arc Smelter",
+        "NumFacilitiesNeeded": 1.3333333333333333,
+        "ItemsConsumedPerSec": {
+            "Iron Ore": 1.3333333333333333
+        },
+        "SecondsSpentPerCraft": 1,
+        "CraftingPerSec": 1.3333333333333333,
+        "UsedFor": "Electric Motor",
+        "Depth": 4
     },
     {
-            "OutputItem": "Iron Ingot",
-            "Facility": "Arc Smelter",
-            "NumFacilitiesNeeded": 0.6666667,
-            "ItemsConsumedPerSec": {
-                    "Iron Ore": 0.6666667
-            },
-            "SecondsSpentPerCraft": 1,
-            "CraftingPerSec": 0.6666667,
-            "UsedFor": "Gear"
+        "OutputItem": "Iron Ingot",
+        "Facility": "Arc Smelter",
+        "NumFacilitiesNeeded": 0.3333333333333333,
+        "ItemsConsumedPerSec": {
+            "Iron Ore": 0.3333333333333333
+        },
+        "SecondsSpentPerCraft": 1,
+        "CraftingPerSec": 0.3333333333333333,
+        "UsedFor": "Gear",
+        "Depth": 4
     },
     {
-            "OutputItem": "Iron Ore",
-            "Facility": "Mining Machine",
-            "NumFacilitiesNeeded": 1.3333334,
-            "ItemsConsumedPerSec": {
-                    "Iron Ore Vein": 0.6666667
-            },
-            "SecondsSpentPerCraft": 2,
-            "CraftingPerSec": 0.6666667,
-            "UsedFor": "Iron Ingot"
+        "OutputItem": "Iron Ore",
+        "Facility": "Mining Machine",
+        "NumFacilitiesNeeded": 1.3333333333333333,
+        "ItemsConsumedPerSec": {
+            "Iron Ore Vein": 0.6666666666666666
+        },
+        "SecondsSpentPerCraft": 2,
+        "CraftingPerSec": 0.6666666666666666,
+        "UsedFor": "Iron Ingot",
+        "Depth": 4
     },
     {
-            "OutputItem": "Iron Ingot",
-            "Facility": "Arc Smelter",
-            "NumFacilitiesNeeded": 1.3333334,
-            "ItemsConsumedPerSec": {
-                    "Iron Ore": 1.3333334
-            },
-            "SecondsSpentPerCraft": 1,
-            "CraftingPerSec": 1.3333334,
-            "UsedFor": "Electric Motor"
+        "OutputItem": "Magnet",
+        "Facility": "Arc Smelter",
+        "NumFacilitiesNeeded": 0.6666666666666666,
+        "ItemsConsumedPerSec": {
+            "Iron Ore": 0.6666666666666666
+        },
+        "SecondsSpentPerCraft": 1,
+        "CraftingPerSec": 0.6666666666666666,
+        "UsedFor": "Magnetic Coil",
+        "Depth": 4
     },
     {
-            "OutputItem": "Iron Ore",
-            "Facility": "Mining Machine",
-            "NumFacilitiesNeeded": 2.6666667,
-            "ItemsConsumedPerSec": {
-                    "Iron Ore Vein": 1.3333334
-            },
-            "SecondsSpentPerCraft": 2,
-            "CraftingPerSec": 1.3333334,
-            "UsedFor": "Iron Ingot"
+        "OutputItem": "Magnetic Coil",
+        "Facility": "Assembling Machine Mk.I",
+        "NumFacilitiesNeeded": 0.3333333333333333,
+        "ItemsConsumedPerSec": {
+            "Copper Ingot": 0.3333333333333333,
+            "Magnet": 0.6666666666666666
+        },
+        "SecondsSpentPerCraft": 1,
+        "CraftingPerSec": 0.6666666666666666,
+        "UsedFor": "Electric Motor",
+        "Depth": 4
     },
     {
-            "OutputItem": "Magnetic Coil",
-            "Facility": "Assembling Machine Mk.I",
-            "NumFacilitiesNeeded": 0.33333334,
-            "ItemsConsumedPerSec": {
-                    "Copper Ingot": 0.33333334,
-                    "Magnet": 0.6666667
-            },
-            "SecondsSpentPerCraft": 1,
-            "CraftingPerSec": 0.6666667,
-            "UsedFor": "Electric Motor"
+        "OutputItem": "Copper Ingot",
+        "Facility": "Arc Smelter",
+        "NumFacilitiesNeeded": 0.3333333333333333,
+        "ItemsConsumedPerSec": {
+            "Copper Ore": 0.3333333333333333
+        },
+        "SecondsSpentPerCraft": 1,
+        "CraftingPerSec": 0.3333333333333333,
+        "UsedFor": "Magnetic Coil",
+        "Depth": 5
     },
     {
-            "OutputItem": "Copper Ingot",
-            "Facility": "Arc Smelter",
-            "NumFacilitiesNeeded": 0.33333334,
-            "ItemsConsumedPerSec": {
-                    "Copper Ore": 0.33333334
-            },
-            "SecondsSpentPerCraft": 1,
-            "CraftingPerSec": 0.33333334,
-            "UsedFor": "Magnetic Coil"
+        "OutputItem": "Copper Ore",
+        "Facility": "Mining Machine",
+        "NumFacilitiesNeeded": 0.6666666666666666,
+        "ItemsConsumedPerSec": {
+            "Copper Vein": 0.3333333333333333
+        },
+        "SecondsSpentPerCraft": 2,
+        "CraftingPerSec": 0.3333333333333333,
+        "UsedFor": "Copper Ingot",
+        "Depth": 5
     },
     {
-            "OutputItem": "Copper Ore",
-            "Facility": "Mining Machine",
-            "NumFacilitiesNeeded": 0.6666667,
-            "ItemsConsumedPerSec": {
-                    "Copper Vein": 0.33333334
-            },
-            "SecondsSpentPerCraft": 2,
-            "CraftingPerSec": 0.33333334,
-            "UsedFor": "Copper Ingot"
+        "OutputItem": "Iron Ingot",
+        "Facility": "Arc Smelter",
+        "NumFacilitiesNeeded": 0.6666666666666666,
+        "ItemsConsumedPerSec": {
+            "Iron Ore": 0.6666666666666666
+        },
+        "SecondsSpentPerCraft": 1,
+        "CraftingPerSec": 0.6666666666666666,
+        "UsedFor": "Gear",
+        "Depth": 5
     },
     {
-            "OutputItem": "Magnet",
-            "Facility": "Arc Smelter",
-            "NumFacilitiesNeeded": 0.6666667,
-            "ItemsConsumedPerSec": {
-                    "Iron Ore": 0.6666667
-            },
-            "SecondsSpentPerCraft": 1,
-            "CraftingPerSec": 0.6666667,
-            "UsedFor": "Magnetic Coil"
+        "OutputItem": "Iron Ore",
+        "Facility": "Mining Machine",
+        "NumFacilitiesNeeded": 0.6666666666666666,
+        "ItemsConsumedPerSec": {
+            "Iron Ore Vein": 0.3333333333333333
+        },
+        "SecondsSpentPerCraft": 2,
+        "CraftingPerSec": 0.3333333333333333,
+        "UsedFor": "Iron Ingot",
+        "Depth": 5
     },
     {
-            "OutputItem": "Iron Ore",
-            "Facility": "Mining Machine",
-            "NumFacilitiesNeeded": 1.3333334,
-            "ItemsConsumedPerSec": {
-                    "Iron Ore Vein": 0.6666667
-            },
-            "SecondsSpentPerCraft": 2,
-            "CraftingPerSec": 0.6666667,
-            "UsedFor": "Magnet"
+        "OutputItem": "Iron Ore",
+        "Facility": "Mining Machine",
+        "NumFacilitiesNeeded": 2.6666666666666665,
+        "ItemsConsumedPerSec": {
+            "Iron Ore Vein": 1.3333333333333333
+        },
+        "SecondsSpentPerCraft": 2,
+        "CraftingPerSec": 1.3333333333333333,
+        "UsedFor": "Iron Ingot",
+        "Depth": 5
     },
     {
-            "OutputItem": "Magnetic Coil",
-            "Facility": "Assembling Machine Mk.I",
-            "NumFacilitiesNeeded": 0.33333334,
-            "ItemsConsumedPerSec": {
-                    "Copper Ingot": 0.33333334,
-                    "Magnet": 0.6666667
-            },
-            "SecondsSpentPerCraft": 1,
-            "CraftingPerSec": 0.6666667,
-            "UsedFor": "Electromagnetic Turbine"
+        "OutputItem": "Iron Ore",
+        "Facility": "Mining Machine",
+        "NumFacilitiesNeeded": 1.3333333333333333,
+        "ItemsConsumedPerSec": {
+            "Iron Ore Vein": 0.6666666666666666
+        },
+        "SecondsSpentPerCraft": 2,
+        "CraftingPerSec": 0.6666666666666666,
+        "UsedFor": "Magnet",
+        "Depth": 5
     },
     {
-            "OutputItem": "Copper Ingot",
-            "Facility": "Arc Smelter",
-            "NumFacilitiesNeeded": 0.33333334,
-            "ItemsConsumedPerSec": {
-                    "Copper Ore": 0.33333334
-            },
-            "SecondsSpentPerCraft": 1,
-            "CraftingPerSec": 0.33333334,
-            "UsedFor": "Magnetic Coil"
+        "OutputItem": "Magnet",
+        "Facility": "Arc Smelter",
+        "NumFacilitiesNeeded": 0.6666666666666666,
+        "ItemsConsumedPerSec": {
+            "Iron Ore": 0.6666666666666666
+        },
+        "SecondsSpentPerCraft": 1,
+        "CraftingPerSec": 0.6666666666666666,
+        "UsedFor": "Magnetic Coil",
+        "Depth": 5
     },
     {
-            "OutputItem": "Copper Ore",
-            "Facility": "Mining Machine",
-            "NumFacilitiesNeeded": 0.6666667,
-            "ItemsConsumedPerSec": {
-                    "Copper Vein": 0.33333334
-            },
-            "SecondsSpentPerCraft": 2,
-            "CraftingPerSec": 0.33333334,
-            "UsedFor": "Copper Ingot"
+        "OutputItem": "Copper Ore",
+        "Facility": "Mining Machine",
+        "NumFacilitiesNeeded": 0.6666666666666666,
+        "ItemsConsumedPerSec": {
+            "Copper Vein": 0.3333333333333333
+        },
+        "SecondsSpentPerCraft": 2,
+        "CraftingPerSec": 0.3333333333333333,
+        "UsedFor": "Copper Ingot",
+        "Depth": 6
     },
     {
-            "OutputItem": "Magnet",
-            "Facility": "Arc Smelter",
-            "NumFacilitiesNeeded": 0.6666667,
-            "ItemsConsumedPerSec": {
-                    "Iron Ore": 0.6666667
-            },
-            "SecondsSpentPerCraft": 1,
-            "CraftingPerSec": 0.6666667,
-            "UsedFor": "Magnetic Coil"
+        "OutputItem": "Iron Ore",
+        "Facility": "Mining Machine",
+        "NumFacilitiesNeeded": 1.3333333333333333,
+        "ItemsConsumedPerSec": {
+            "Iron Ore Vein": 0.6666666666666666
+        },
+        "SecondsSpentPerCraft": 2,
+        "CraftingPerSec": 0.6666666666666666,
+        "UsedFor": "Iron Ingot",
+        "Depth": 6
     },
     {
-            "OutputItem": "Iron Ore",
-            "Facility": "Mining Machine",
-            "NumFacilitiesNeeded": 1.3333334,
-            "ItemsConsumedPerSec": {
-                    "Iron Ore Vein": 0.6666667
-            },
-            "SecondsSpentPerCraft": 2,
-            "CraftingPerSec": 0.6666667,
-            "UsedFor": "Magnet"
+        "OutputItem": "Iron Ore",
+        "Facility": "Mining Machine",
+        "NumFacilitiesNeeded": 1.3333333333333333,
+        "ItemsConsumedPerSec": {
+            "Iron Ore Vein": 0.6666666666666666
+        },
+        "SecondsSpentPerCraft": 2,
+        "CraftingPerSec": 0.6666666666666666,
+        "UsedFor": "Magnet",
+        "Depth": 6
     }
 ]

@@ -7,6 +7,6 @@ type ComputedRecipe struct {
 	ItemsConsumedPerSec  map[ItemName]float64
 	SecondsSpentPerCraft float64
 	CraftingPerSec       float64
-	UsedFor              ItemName
+	UsedFor              string
 	Depth                int `json:"Depth,omitempty"`
 }

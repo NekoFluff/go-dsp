@@ -4,9 +4,7 @@ import (
 	"encoding/json"
 	"fmt"
 	"log"
-	"math"
 	"os"
-	"sort"
 	"strings"
 
 	"github.com/NekoFluff/go-dsp/dsp"
@@ -17,25 +15,21 @@ func main() {
 	optimizer := dsp.NewOptimizer(dsp.OptimizerConfig{
 		DataSource: "data/items.json",
 	})
+
+	rRequirements := dsp.RecipeRequirements{
+		"Carbon Nanotube": 1,
+	}
 	// fmt.Println(optimizer.GetRecipe(dsp.ItemName("Iron Ingot")))
 
 	recipes := []dsp.ComputedRecipe{}
-	recipeName := dsp.ItemName("Proliferator Mk.III")
-	// recipe = recipe.concat(getRecipeForItem('Electromagnetic matrix', 2));
-	// recipe = recipe.concat(getRecipeForItem('Energy matrix', 2));
-	// // recipe = recipe.concat(getRecipeForItem('Plastic', 2));
-	// recipe = recipe.concat(getRecipeForItem('Foundation', 2));
-	// // // recipe = recipe.concat(getRecipeForItem('Conveyor belt MK.I', 1));
-	// // recipe = recipe.concat(getRecipeForItem('Conveyor belt MK.II', 1));
-	// recipe = recipe.concat(getRecipeForItem('Sorter MK.III', 0.5));
-	// recipe = recipe.concat(getRecipeForItem('Graphene', 4));
+	recipeName := dsp.ItemName("Conveyor belt MK.II")
+	recipes = append(recipes, optimizer.GetOptimalRecipe(recipeName, 1, "", map[dsp.ItemName]bool{}, 1, rRequirements)...)
+	optimizer.SortRecipes(recipes)
 
-	// recipe = append(recipe, optimizer.GetOptimalRecipe("Conveyor belt MK.II", 1, "", map[dsp.ItemName]bool{})...)
-	recipes = append(recipes, optimizer.GetOptimalRecipe(recipeName, 4, "", map[dsp.ItemName]bool{}, 1)...)
-	recipes = combineRecipes(recipes)
+	recipes = optimizer.CombineRecipes(recipes)
 
 	// Sort
-	sortRecipes(recipes)
+	optimizer.SortRecipes(recipes)
 
 	// Print out
 	jsonStr, err := json.MarshalIndent(recipes, "", "\t")
@@ -53,64 +47,4 @@ func main() {
 	_ = os.WriteFile("dsp_output.json", jsonStr, 0644)
 
 	log.Println("Output to output.json")
-}
-
-func combineRecipes(recipes []dsp.ComputedRecipe) []dsp.ComputedRecipe {
-	uniqueRecipes := make(map[dsp.ItemName]dsp.ComputedRecipe)
-
-	for _, recipe := range recipes {
-		if uRecipe, ok := uniqueRecipes[recipe.OutputItem]; ok { // combine recipe objects
-
-			old_num := uRecipe.NumFacilitiesNeeded
-			new_num := recipe.NumFacilitiesNeeded
-			total_num := old_num + new_num
-			for materialName, perSecConsumption := range uRecipe.ItemsConsumedPerSec {
-				uRecipe.ItemsConsumedPerSec[materialName] = perSecConsumption + recipe.ItemsConsumedPerSec[materialName]
-			}
-
-			sspc := (uRecipe.SecondsSpentPerCraft*old_num + recipe.SecondsSpentPerCraft*new_num) / total_num
-			if math.IsNaN(float64(sspc)) {
-				sspc = 0.0
-			}
-			uRecipe.SecondsSpentPerCraft = sspc
-
-			uRecipe.CraftingPerSec = uRecipe.CraftingPerSec + recipe.CraftingPerSec
-			uRecipe.UsedFor = dsp.ItemName(fmt.Sprintf("%s | %s (Uses %0.2f/s)", uRecipe.UsedFor, recipe.UsedFor, recipe.CraftingPerSec))
-			// uRecipe.UsedFor = uRecipe.UsedFor.filter((v, i, a) => a.indexOf(v) === i); // get unique values
-			uRecipe.NumFacilitiesNeeded += recipe.NumFacilitiesNeeded
-			uRecipe.Depth = max(uRecipe.Depth, recipe.Depth)
-			uniqueRecipes[recipe.OutputItem] = uRecipe
-
-		} else { // add recipe object
-			recipe.UsedFor = dsp.ItemName(fmt.Sprintf("%s (Uses %0.2f/s)", recipe.UsedFor, recipe.CraftingPerSec))
-			uniqueRecipes[recipe.OutputItem] = recipe
-		}
-	}
-
-	v := []dsp.ComputedRecipe{}
-	for _, value := range uniqueRecipes {
-		v = append(v, value)
-	}
-	return v
-}
-
-func sortRecipes(recipes []dsp.ComputedRecipe) {
-	sort.SliceStable(recipes, func(i, j int) bool {
-		if recipes[i].Depth != recipes[j].Depth {
-			return recipes[i].Depth < recipes[j].Depth
-		} else if recipes[i].OutputItem != recipes[j].OutputItem {
-			return recipes[i].OutputItem < recipes[j].OutputItem
-		} else if recipes[i].UsedFor != recipes[j].UsedFor {
-			return recipes[i].UsedFor < recipes[j].UsedFor
-		} else {
-			return recipes[i].CraftingPerSec < recipes[j].CraftingPerSec
-		}
-	})
-}
-
-func max(x, y int) int {
-	if x < y {
-		return y
-	}
-	return x
 }

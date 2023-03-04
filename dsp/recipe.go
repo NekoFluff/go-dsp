@@ -8,4 +8,6 @@ type Recipe struct {
 	Materials       map[ItemName]float64 `json:"Materials"`
 }
 
+type RecipeRequirements map[ItemName]int
+
 type ItemName string

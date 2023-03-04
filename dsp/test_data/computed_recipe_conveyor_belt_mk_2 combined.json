@@ -1,0 +1,140 @@
+[
+    {
+        "OutputItem": "Conveyor Belt Mk.II",
+        "Facility": "Assembling Machine Mk.I",
+        "NumFacilitiesNeeded": 0.3333333333333333,
+        "ItemsConsumedPerSec": {
+            "Conveyor Belt Mk.I": 1,
+            "Electromagnetic Turbine": 0.3333333333333333
+        },
+        "SecondsSpentPerCraft": 1,
+        "CraftingPerSec": 1,
+        "UsedFor": "",
+        "Depth": 1
+    },
+    {
+        "OutputItem": "Conveyor Belt Mk.I",
+        "Facility": "Assembling Machine Mk.I",
+        "NumFacilitiesNeeded": 0.3333333333333333,
+        "ItemsConsumedPerSec": {
+            "Gear": 0.3333333333333333,
+            "Iron Ingot": 0.6666666666666666
+        },
+        "SecondsSpentPerCraft": 1,
+        "CraftingPerSec": 1,
+        "UsedFor": "Conveyor Belt Mk.II (Uses 1.00/s)",
+        "Depth": 2
+    },
+    {
+        "OutputItem": "Electromagnetic Turbine",
+        "Facility": "Assembling Machine Mk.I",
+        "NumFacilitiesNeeded": 0.6666666666666666,
+        "ItemsConsumedPerSec": {
+            "Electric Motor": 0.6666666666666666,
+            "Magnetic Coil": 0.6666666666666666
+        },
+        "SecondsSpentPerCraft": 2,
+        "CraftingPerSec": 0.3333333333333333,
+        "UsedFor": "Conveyor Belt Mk.II (Uses 0.33/s)",
+        "Depth": 2
+    },
+    {
+        "OutputItem": "Electric Motor",
+        "Facility": "Assembling Machine Mk.I",
+        "NumFacilitiesNeeded": 1.3333333333333333,
+        "ItemsConsumedPerSec": {
+            "Gear": 0.6666666666666666,
+            "Iron Ingot": 1.3333333333333333,
+            "Magnetic Coil": 0.6666666666666666
+        },
+        "SecondsSpentPerCraft": 2,
+        "CraftingPerSec": 0.6666666666666666,
+        "UsedFor": "Electromagnetic Turbine (Uses 0.67/s)",
+        "Depth": 3
+    },
+    {
+        "OutputItem": "Gear",
+        "Facility": "Assembling Machine Mk.I",
+        "NumFacilitiesNeeded": 1,
+        "ItemsConsumedPerSec": {
+            "Iron Ingot": 1
+        },
+        "SecondsSpentPerCraft": 1,
+        "CraftingPerSec": 1,
+        "UsedFor": "Conveyor Belt Mk.I (Uses 0.33/s) | Electric Motor (Uses 0.67/s)",
+        "Depth": 4
+    },
+    {
+        "OutputItem": "Magnetic Coil",
+        "Facility": "Assembling Machine Mk.I",
+        "NumFacilitiesNeeded": 0.6666666666666666,
+        "ItemsConsumedPerSec": {
+            "Copper Ingot": 0.6666666666666666,
+            "Magnet": 1.3333333333333333
+        },
+        "SecondsSpentPerCraft": 1,
+        "CraftingPerSec": 1.3333333333333333,
+        "UsedFor": "Electromagnetic Turbine (Uses 0.67/s) | Electric Motor (Uses 0.67/s)",
+        "Depth": 4
+    },
+    {
+        "OutputItem": "Copper Ingot",
+        "Facility": "Arc Smelter",
+        "NumFacilitiesNeeded": 0.6666666666666666,
+        "ItemsConsumedPerSec": {
+            "Copper Ore": 0.6666666666666666
+        },
+        "SecondsSpentPerCraft": 1,
+        "CraftingPerSec": 0.6666666666666666,
+        "UsedFor": "Magnetic Coil (Uses 0.33/s) | Magnetic Coil (Uses 0.33/s)",
+        "Depth": 5
+    },
+    {
+        "OutputItem": "Iron Ingot",
+        "Facility": "Arc Smelter",
+        "NumFacilitiesNeeded": 3,
+        "ItemsConsumedPerSec": {
+            "Iron Ore": 3
+        },
+        "SecondsSpentPerCraft": 1,
+        "CraftingPerSec": 3,
+        "UsedFor": "Conveyor Belt Mk.I (Uses 0.67/s) | Electric Motor (Uses 1.33/s) | Gear (Uses 0.33/s) | Gear (Uses 0.67/s)",
+        "Depth": 5
+    },
+    {
+        "OutputItem": "Magnet",
+        "Facility": "Arc Smelter",
+        "NumFacilitiesNeeded": 1.3333333333333333,
+        "ItemsConsumedPerSec": {
+            "Iron Ore": 1.3333333333333333
+        },
+        "SecondsSpentPerCraft": 1,
+        "CraftingPerSec": 1.3333333333333333,
+        "UsedFor": "Magnetic Coil (Uses 0.67/s) | Magnetic Coil (Uses 0.67/s)",
+        "Depth": 5
+    },
+    {
+        "OutputItem": "Copper Ore",
+        "Facility": "Mining Machine",
+        "NumFacilitiesNeeded": 1.3333333333333333,
+        "ItemsConsumedPerSec": {
+            "Copper Vein": 0.6666666666666666
+        },
+        "SecondsSpentPerCraft": 2,
+        "CraftingPerSec": 0.6666666666666666,
+        "UsedFor": "Copper Ingot (Uses 0.33/s) | Copper Ingot (Uses 0.33/s)",
+        "Depth": 6
+    },
+    {
+        "OutputItem": "Iron Ore",
+        "Facility": "Mining Machine",
+        "NumFacilitiesNeeded": 8.666666666666666,
+        "ItemsConsumedPerSec": {
+            "Iron Ore Vein": 4.333333333333333
+        },
+        "SecondsSpentPerCraft": 2,
+        "CraftingPerSec": 4.333333333333333,
+        "UsedFor": "Iron Ingot (Uses 0.67/s) | Iron Ingot (Uses 0.33/s) | Iron Ingot (Uses 1.33/s) | Magnet (Uses 0.67/s) | Iron Ingot (Uses 0.67/s) | Magnet (Uses 0.67/s)",
+        "Depth": 6
+    }
+]
