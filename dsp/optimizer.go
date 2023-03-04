@@ -73,8 +73,12 @@ func (o *Optimizer) GetRecipe(itemName ItemName, recipeIdx int) (Recipe, bool) {
 	return recipes[0], true
 }
 
-func (o *Optimizer) GetRecipes() map[ItemName][]Recipe {
-	return o.recipeMap
+func (o *Optimizer) GetRecipes() [][]Recipe {
+	recipes := [][]Recipe{}
+	for _, recipe := range o.recipeMap {
+		recipes = append(recipes, recipe)
+	}
+	return recipes
 }
 
 func (o *Optimizer) GetOptimalRecipe(itemName ItemName, craftingSpeed float64, parentItemName ItemName, seenRecipes map[ItemName]bool, depth int, recipeRequirements RecipeRequirements) []ComputedRecipe {
