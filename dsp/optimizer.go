@@ -28,33 +28,31 @@ func NewOptimizer(config OptimizerConfig) *Optimizer {
 		recipeMap: make(map[ItemName][]Recipe),
 		config:    config,
 	}
-	o.loadRecipes()
+	o.once.Do(o.LoadRecipes)
 	return o
 }
 
-func (o *Optimizer) loadRecipes() {
-	o.once.Do(func() {
-		// Open up the file
-		jsonFile, err := os.Open(o.config.DataSource)
-		if err != nil {
-			log.Fatal(err)
-		}
-		defer jsonFile.Close()
+func (o *Optimizer) LoadRecipes() {
+	// Open up the file
+	jsonFile, err := os.Open(o.config.DataSource)
+	if err != nil {
+		log.Fatal(err)
+	}
+	defer jsonFile.Close()
 
-		// Read and unmarshal the file
-		byteValue, _ := ioutil.ReadAll(jsonFile)
-		var recipe []Recipe
-		err = json.Unmarshal(byteValue, &recipe)
-		if err != nil {
-			log.Fatal(err)
-		}
+	// Read and unmarshal the file
+	byteValue, _ := ioutil.ReadAll(jsonFile)
+	var recipe []Recipe
+	err = json.Unmarshal(byteValue, &recipe)
+	if err != nil {
+		log.Fatal(err)
+	}
 
-		// Map the recipe
-		for _, v := range recipe {
-			name := ItemName(strings.ToLower(string(v.OutputItem)))
-			o.recipeMap[name] = append(o.recipeMap[name], v)
-		}
-	})
+	// Map the recipe
+	for _, v := range recipe {
+		name := ItemName(strings.ToLower(string(v.OutputItem)))
+		o.recipeMap[name] = append(o.recipeMap[name], v)
+	}
 }
 
 func (o *Optimizer) GetRecipe(itemName ItemName, recipeIdx int) (Recipe, bool) {
