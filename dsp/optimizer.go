@@ -99,14 +99,10 @@ func (o *Optimizer) GetOptimalRecipe(itemName ItemName, craftingSpeed float64, p
 	}
 
 	consumedMats := make(map[ItemName]float64)
-	numberOfFacilitiesNeeded := recipe.Time * craftingSpeed / recipe.OutputItemCount
+	numberOfFacilitiesNeeded := guardInf(float64(recipe.Time * craftingSpeed / recipe.OutputItemCount))
 
 	for materialName, materialCount := range recipe.Materials {
-		c := materialCount * numberOfFacilitiesNeeded / recipe.Time
-		if math.IsNaN(float64(c)) {
-			c = 0.0
-		}
-		consumedMats[materialName] = c
+		consumedMats[materialName] = guardInf(float64(materialCount * numberOfFacilitiesNeeded / recipe.Time))
 	}
 
 	computedRecipe := ComputedRecipe{
@@ -161,12 +157,7 @@ func (o *Optimizer) CombineRecipes(recipes []ComputedRecipe) []ComputedRecipe {
 				uRecipe.ItemsConsumedPerSec[materialName] = perSecConsumption + recipe.ItemsConsumedPerSec[materialName]
 			}
 
-			sspc := (uRecipe.SecondsSpentPerCraft*old_num + recipe.SecondsSpentPerCraft*new_num) / total_num
-			if math.IsNaN(float64(sspc)) {
-				sspc = 0.0
-			}
-			uRecipe.SecondsSpentPerCraft = sspc
-
+			uRecipe.SecondsSpentPerCraft = guardInf(float64(uRecipe.SecondsSpentPerCraft*old_num+recipe.SecondsSpentPerCraft*new_num) / total_num)
 			uRecipe.CraftingPerSec = uRecipe.CraftingPerSec + recipe.CraftingPerSec
 			uRecipe.UsedFor = fmt.Sprintf("%s | %s (Uses %0.2f/s)", uRecipe.UsedFor, recipe.UsedFor, recipe.CraftingPerSec)
 			// uRecipe.UsedFor = uRecipe.UsedFor.filter((v, i, a) => a.indexOf(v) === i); // get unique values
@@ -192,6 +183,13 @@ func (o *Optimizer) CombineRecipes(recipes []ComputedRecipe) []ComputedRecipe {
 func max(x, y int) int {
 	if x < y {
 		return y
+	}
+	return x
+}
+
+func guardInf(x float64) float64 {
+	if math.IsNaN(x) {
+		return 0.0
 	}
 	return x
 }
