@@ -41,16 +41,16 @@ func (o *Optimizer) LoadRecipes() {
 
 	// Read and unmarshal the file
 	byteValue, _ := ioutil.ReadAll(jsonFile)
-	var recipe []Recipe
-	err = json.Unmarshal(byteValue, &recipe)
+	var recipes []Recipe
+	err = json.Unmarshal(byteValue, &recipes)
 	if err != nil {
 		log.Fatal(err)
 	}
 
 	// Map the recipe
-	for _, v := range recipe {
-		name := ItemName(strings.ToLower(string(v.OutputItem)))
-		o.recipeMap[name] = append(o.recipeMap[name], v)
+	for _, recipe := range recipes {
+		name := ItemName(strings.ToLower(string(recipe.OutputItem)))
+		o.recipeMap[name] = append(o.recipeMap[name], recipe)
 	}
 }
 
