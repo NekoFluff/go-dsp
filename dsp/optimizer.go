@@ -13,8 +13,7 @@ import (
 )
 
 type Optimizer struct {
-	// Global
-	once      sync.Once
+	once      sync.Once // Global
 	recipeMap map[ItemName][]Recipe
 	config    OptimizerConfig
 }
@@ -160,7 +159,6 @@ func (o *Optimizer) CombineRecipes(recipes []ComputedRecipe) []ComputedRecipe {
 			uRecipe.SecondsSpentPerCraft = guardInf(float64(uRecipe.SecondsSpentPerCraft*old_num+recipe.SecondsSpentPerCraft*new_num) / total_num)
 			uRecipe.CraftingPerSec = uRecipe.CraftingPerSec + recipe.CraftingPerSec
 			uRecipe.UsedFor = fmt.Sprintf("%s | %s (Uses %0.2f/s)", uRecipe.UsedFor, recipe.UsedFor, recipe.CraftingPerSec)
-			// uRecipe.UsedFor = uRecipe.UsedFor.filter((v, i, a) => a.indexOf(v) === i); // get unique values
 			uRecipe.NumFacilitiesNeeded += recipe.NumFacilitiesNeeded
 			uRecipe.Depth = max(uRecipe.Depth, recipe.Depth)
 			uniqueRecipes[recipe.OutputItem] = uRecipe
