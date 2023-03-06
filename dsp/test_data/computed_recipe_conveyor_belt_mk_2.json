@@ -152,11 +152,11 @@
     {
         "OutputItem": "Magnet",
         "Facility": "Arc Smelter",
-        "NumFacilitiesNeeded": 0.6666666666666666,
+        "NumFacilitiesNeeded": 1,
         "ItemsConsumedPerSec": {
             "Iron Ore": 0.6666666666666666
         },
-        "SecondsSpentPerCraft": 1,
+        "SecondsSpentPerCraft": 1.5,
         "CraftingPerSec": 0.6666666666666666,
         "UsedFor": "Magnetic Coil",
         "Depth": 4
@@ -249,11 +249,11 @@
     {
         "OutputItem": "Magnet",
         "Facility": "Arc Smelter",
-        "NumFacilitiesNeeded": 0.6666666666666666,
+        "NumFacilitiesNeeded": 1,
         "ItemsConsumedPerSec": {
             "Iron Ore": 0.6666666666666666
         },
-        "SecondsSpentPerCraft": 1,
+        "SecondsSpentPerCraft": 1.5,
         "CraftingPerSec": 0.6666666666666666,
         "UsedFor": "Magnetic Coil",
         "Depth": 5

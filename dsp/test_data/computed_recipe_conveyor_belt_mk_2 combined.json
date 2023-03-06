@@ -104,11 +104,11 @@
     {
         "OutputItem": "Magnet",
         "Facility": "Arc Smelter",
-        "NumFacilitiesNeeded": 1.3333333333333333,
+        "NumFacilitiesNeeded": 2,
         "ItemsConsumedPerSec": {
             "Iron Ore": 1.3333333333333333
         },
-        "SecondsSpentPerCraft": 1,
+        "SecondsSpentPerCraft": 1.5,
         "CraftingPerSec": 1.3333333333333333,
         "UsedFor": "Magnetic Coil (Uses 0.67/s) | Magnetic Coil (Uses 0.67/s)",
         "Depth": 5
