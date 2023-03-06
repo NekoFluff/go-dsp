@@ -35,7 +35,7 @@ func (o *Optimizer) LoadRecipes() {
 	// Open up the file
 	jsonFile, err := os.Open(o.config.DataSource)
 	if err != nil {
-		log.Fatal(err)
+		log.Fatal(err, "failed to open recipes file")
 	}
 	defer jsonFile.Close()
 
@@ -44,7 +44,7 @@ func (o *Optimizer) LoadRecipes() {
 	var recipes []Recipe
 	err = json.Unmarshal(byteValue, &recipes)
 	if err != nil {
-		log.Fatal(err)
+		log.Fatal(err, "failed to unmarshal recipes from file")
 	}
 
 	// Map the recipe
@@ -186,7 +186,7 @@ func max(x, y int) int {
 }
 
 func guardInf(x float64) float64 {
-	if math.IsNaN(x) {
+	if math.IsNaN(x) || math.IsInf(x, 0) {
 		return 0.0
 	}
 	return x

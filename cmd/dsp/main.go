@@ -17,12 +17,20 @@ func main() {
 	})
 
 	rRequirements := dsp.RecipeRequirements{
-		"Carbon Nanotube": 1,
+		"Carbon Nanotube":    0,
+		"Crystal Silicon":    0,
+		"Diamond":            0,
+		"Deuterium":          0,
+		"Particle Container": 0,
+		"Graphene":           1,
+		"Hydrogen":           0,
+		"Fire Ice":           1,
+		"Casimir Crystal":    0,
 	}
 	// fmt.Println(optimizer.GetRecipe(dsp.ItemName("Iron Ingot")))
 
 	recipes := []dsp.ComputedRecipe{}
-	recipeName := dsp.ItemName("Conveyor belt MK.II")
+	recipeName := dsp.ItemName("Universe Matrix")
 	recipes = append(recipes, optimizer.GetOptimalRecipe(recipeName, 1, "", map[dsp.ItemName]bool{}, 1, rRequirements)...)
 	optimizer.SortRecipes(recipes)
 
