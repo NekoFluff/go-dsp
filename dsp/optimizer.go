@@ -113,6 +113,7 @@ func (o *Optimizer) GetOptimalRecipe(itemName ItemName, craftingSpeed float64, p
 		CraftingPerSec:       craftingSpeed,
 		UsedFor:              string(parentItemName),
 		Depth:                depth,
+		Image:                recipe.Image,
 	}
 	computedRecipes = append(computedRecipes, computedRecipe)
 
