@@ -8,5 +8,6 @@ type ComputedRecipe struct {
 	SecondsSpentPerCraft float64
 	CraftingPerSec       float64
 	UsedFor              string
-	Depth                int `json:"Depth,omitempty"`
+	Depth                int    `json:"Depth,omitempty"`
+	Image                string `json:"Image"`
 }
